@@ -10,12 +10,12 @@ export class TypeOrmConfigService implements TypeOrmOptionsFactory {
     return {
       database: 'ediaristas',
       username: 'root',
-      password: 'treinaweb',
+      password: 'Mvb985674',
       host: 'localhost',
       port: 3306,
       synchronize: false,
       type: 'mysql',
-      entities: [join(__dirname, '..', '**type/*entity.{ts, js}')],
+      entities: [join(__dirname, '..', '**/*entity.{ts, js}')],
       migrations: [join(__dirname, '..', './database/migrations/*{ts, js}')],
       namingStrategy: new SnakeNamingStrategy(),
     };
