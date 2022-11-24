@@ -25,8 +25,8 @@ export class ServicesController {
     private readonly servicosRepository: Repository<Service>,
   ) {}
 
-  @Get('create')
-  @Render('servicos/index')
+  @Get()
+  @Render('servicos/cadastrar')
   exibirCadastrar() {
     //
   }
@@ -47,8 +47,8 @@ export class ServicesController {
   @Get(':id/editar')
   @Render('servicos/editar')
   async atualizarServicos(@Param('id') id: number) {
-    const servico = await this.servicosRepository.findOneBy({id: id});
-    return { servico: servico};
+    const servico = await this.servicosRepository.findOneBy({ id: id });
+    return { servico: servico };
   }
 
   @Patch(':id/editar')
@@ -56,7 +56,7 @@ export class ServicesController {
   async update(
     @Param('id') id: number,
     @Body() updateServiceDto: UpdateServiceDto,
-    ) {
+  ) {
     return await this.servicosRepository.update(id, updateServiceDto);
   }
 
