@@ -14,7 +14,7 @@ export class Service {
   nome: string;
 
   @Column()
-  valorMinimo: string;
+  valorMinimo: number;
 
   @Column()
   quantidadeHoras: number;
