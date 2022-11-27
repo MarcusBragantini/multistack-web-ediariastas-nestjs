@@ -20,13 +20,17 @@
                     <th>{{this.id}}</th>
                     <td>{{this.nome}}</td>
                     <td>{{this.email}}</td>
-                    <td><a href="#" class="btn btn-primary">Atualizar</a><a href="#" class="btn btn-danger">Excluir</a></td>
+                    <td><a href="/admin/usuarios/{{this.id}}/editar" class="btn btn-primary">Atualizar</a>
+                    <form action="/admin/usuarios/{{this.id}}?_method=DELETE" method="post" style="display: inline">
+                    <button href="/admin/usuarios/{{this.id}}" type="submit" onclick="return confirm('Tem certeza que deseja excluir esse usuário?')" class="btn btn-danger">Excluir</button>
+                    </form>
+                    </td>
                 </tr>
               {{/each}}
             </tbody>
         </table>
         <div class="float-left">
-            <a href="#" class="btn btn-success">Novo usuário</a>
+            <a href="/admin/usuarios/create" class="btn btn-success">Novo usuário</a>
         </div>
     </div>
 </div>

@@ -1,5 +1,9 @@
 /* eslint-disable prettier/prettier */
-import { BadRequestException, Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { BeforeInsert, Repository } from 'typeorm';
 import { CreateUsuarioPlataformaDto } from './dto/create-usuario-plataforma.dto';
@@ -36,16 +40,47 @@ export class UsuarioPlataformaService {
     return await this.usuarioRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} usuarioPlataforma`;
+  async findOne(id: number) {
+    const user = await this.usuarioRepository.findOneBy({ id: id });
+    if (!user) {
+      throw new NotFoundException();
+    }
+    return user;
   }
 
-  update(id: number, updateUsuarioPlataformaDto: UpdateUsuarioPlataformaDto) {
-    return `This action updates a #${id} usuarioPlataforma`;
+  async update(
+    id: number,
+    updateUsuarioPlataformaDto: UpdateUsuarioPlataformaDto,
+  ) {
+    const user = await this.usuarioRepository.findOneBy({ id: id });
+    const userEmail = await this.usuarioRepository.findOneBy({
+      email: updateUsuarioPlataformaDto.email,
+    });
+
+    if (
+      updateUsuarioPlataformaDto.password !==
+      updateUsuarioPlataformaDto.passwordConfirmation
+    ) {
+      throw new BadRequestException('Senha dos campos não conferem');
+    } else if (!userEmail || userEmail.email === user.email) {
+      user.nome = updateUsuarioPlataformaDto.nome;
+      user.email = updateUsuarioPlataformaDto.email;
+      user.password = await this.setPassword(
+        updateUsuarioPlataformaDto.password,
+      );
+      await this.usuarioRepository.save(user);
+      return user;
+    } else if (userEmail.email !== user.email) {
+      throw new BadRequestException('Email já cadastrado');
+    }
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} usuarioPlataforma`;
+  async remove(id: number) {
+    const result = await this.usuarioRepository.delete(id);
+
+    if(result.affected === 0) {
+      throw new NotFoundException('Nenhum id encontrado');
+    }
   }
 
   @BeforeInsert()

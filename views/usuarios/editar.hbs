@@ -1,12 +1,12 @@
 <main>
         <div class="content-header">
             <div class="container-fluid">
-                <h1>Novo usuário</h1>
+                <h1>Editar usuário</h1>
             </div>
         </div>
         <div class="content">
             <div class="container-fluid">
-                <form action="/admin/usuarios" method="Post">
+                <form action="/admin/usuarios/{{usuario.id}}/editar?_method=PATCH" method="Post">
                 <div class="card">
                     <div class="card-body">
                         <fieldset>
@@ -21,25 +21,25 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="nome">Nome</label>
-                                        <input type="text" required value="{{oldData.0.nome}}" class="form-control" name="nome" placeholder="nome do usuario">
+                                        <input type="text"  value="{{#if message}}{{oldData.0.nome}}{{^}}{{usuario.nome}}{{/if}}" class="form-control" name="nome" placeholder="nome do usuario">
                                     </div>
                                 </div>
                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="email">Email</label>
-                                        <input type="email" required value="{{oldData.0.email}}" class="form-control" name="email" placeholder="Email do usuario">
+                                        <input type="email"  value="{{#if message}}{{oldData.0.email}}{{^}}{{usuario.email}}{{/if}}" class="form-control" name="email" placeholder="Email do usuario">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="password">Senha</label>
-                                        <input type="password" required value="" class="form-control" name="password" placeholder="Senha">
+                                        <input type="password"  value="" class="form-control" name="password" placeholder="Senha">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="passwordConfirmation">Confirmação de senha</label>
-                                        <input type="password" required value="" class="form-control" name="passwordConfirmation" placeholder="Confirme a senha">
+                                        <input type="password"  value="" class="form-control" name="passwordConfirmation" placeholder="Confirme a senha">
                                     </div>
                                 </div>
                         </fieldset>
