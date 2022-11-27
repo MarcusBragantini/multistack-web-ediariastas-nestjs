@@ -6,21 +6,31 @@
   </div>
   <div class='content'>
     <div class='container-fluid'>
-      <form action='/admin/servicos/{{servico.id}}/editar?_method=patch' method='post'>
+      <form
+        action='/admin/servicos/{{servico.id}}/editar?_method=patch'
+        method='post'
+      >
         <div class='card'>
           <div class='card-body'>
             <fieldset>
               <legend>Identificação</legend>
               <div class='row'>
+                <div class='col-lg-12'>
+                  <div class='col-lg-3'>
+                    <div class='{{alert}}'>
+                      <p>{{{message}}}</p>
+                    </div>
+                  </div>
+                </div>
                 <div class='col-md-4'>
                   <div class='form-group'>
                     <label for='nome'>Nome</label>
                     <input
                       type='text'
-                      value='{{ servico.nome}}'
+                      value='{{#if message}}{{oldData.0.nome}}{{^}}{{servico.nome}}{{/if}}'
                       class='form-control'
                       name='nome'
-                      placeholder='nome do serviço'
+                      placeholder='nome do serviço' required
                     />
                   </div>
                 </div>
@@ -28,7 +38,9 @@
                   <div class='form-group'>
                     <label for='icone'>Icone</label>
                     <select name='icone' id='icone' class='form-control'>
-                      <option value='{{ servico.icone}}'>{{ servico.icone}}</option>
+                      <option
+                        value='{{#if message}}{{oldData.0.icone}}{{^}}{{servico.icone}}{{/if}}'
+                      >{{#if message}}{{oldData.0.icone}}{{^}}{{servico.icone}}{{/if}}</option>
                       <option value='twf-cleaning-1'>Icone 1</option>
                       <option value='twf-cleaning-2'>Icone 2</option>
                       <option value='twf-cleaning-3'>Icone 3</option>
@@ -40,10 +52,10 @@
                     <label for='posicao'>Posição na plataforma</label>
                     <input
                       type='text'
-                      value='{{ servico.posicao}}'
+                      value='{{#if message}}{{oldData.0.posicao}}{{^}}{{servico.posicao}}{{/if}}'
                       class='form-control'
                       name='posicao'
-                      placeholder='Posição do serviço na plataforma'
+                      placeholder='Posição do serviço na plataforma' data-mask="00" required
                     />
                   </div>
                 </div>
@@ -57,10 +69,10 @@
                     <label for='valorMinimo'>Valor Mínimo</label>
                     <input
                       type='text'
-                      value='{{ servico.valorMinimo}}'
+                      value='{{#if message}}{{oldData.0.valorMinimo}}{{^}}{{servico.valorMinimo}}{{/if}}'
                       class='form-control'
                       name='valorMinimo'
-                      placeholder='Valor mínimo do serviço'
+                      placeholder='Valor mínimo do serviço' required data-mask="#.##0,00" data-mask-reverse="true"
                     />
                   </div>
                 </div>
@@ -69,10 +81,10 @@
                     <label for='quantidadeHoras'>Quantidade mínima de horas</label>
                     <input
                       type='number'
-                      value='{{ servico.quantidadeHoras}}'
+                      value='{{#if message}}{{oldData.0.quantidadeHoras}}{{^}}{{servico.quantidadeHoras}}{{/if}}'
                       class='form-control'
                       name='quantidadeHoras'
-                      placeholder='Quantidade mínima de horas'
+                      placeholder='Quantidade mínima de horas'data-mask="0" required
                     />
                   </div>
                 </div>
@@ -81,10 +93,10 @@
                     <label for='porcentagem'>Porcentagem da comissão</label>
                     <input
                       type='text'
-                      value='{{ servico.porcentagem}}'
+                      value='{{#if message}}{{oldData.0.porcentagem}}{{^}}{{servico.porcentagem}}{{/if}}'
                       class='form-control'
                       name='porcentagem'
-                      placeholder='Porcentagem da comissão do serviço'
+                      placeholder='Porcentagem da comissão do serviço' data-mask="000" required
                     />
                   </div>
                 </div>
@@ -98,10 +110,10 @@
                     <label for='valorQuarto'>Valor por quarto</label>
                     <input
                       type='text'
-                      value='{{ servico.valorQuarto}}'
+                      value='{{#if message}}{{oldData.0.valorQuarto}}{{^}}{{servico.valorQuarto}}{{/if}}'
                       class='form-control'
                       name='valorQuarto'
-                      placeholder='Valor por quarto'
+                      placeholder='Valor por quarto' required data-mask="#.##0,00" data-mask-reverse="true"
                     />
                   </div>
                 </div>
@@ -110,10 +122,10 @@
                     <label for='horasQuarto'>Quantidade de horas por quarto</label>
                     <input
                       type='number'
-                      value='{{ servico.horasQuarto}}'
+                      value='{{#if message}}{{oldData.0.horasQuarto}}{{^}}{{servico.horasQuarto}}{{/if}}'
                       class='form-control'
                       name='horasQuarto'
-                      placeholder='Quantidade de horas por quarto'
+                      placeholder='Quantidade de horas por quarto'data-mask="0" required
                     />
                   </div>
                 </div>
@@ -124,10 +136,10 @@
                     <label for='valorSala'>Valor por sala</label>
                     <input
                       type='text'
-                      value='{{ servico.valorSala}}'
+                      value='{{#if message}}{{oldData.0.valorSala}}{{^}}{{servico.valorSala}}{{/if}}'
                       class='form-control'
                       name='valorSala'
-                      placeholder='Valor por sala'
+                      placeholder='Valor por sala' required data-mask="#.##0,00" data-mask-reverse="true"
                     />
                   </div>
                 </div>
@@ -136,10 +148,10 @@
                     <label for='horasSala'>Quantidade de horas por sala</label>
                     <input
                       type='number'
-                      value='{{ servico.horasSala}}'
+                      value='{{#if message}}{{oldData.0.horasSala}}{{^}}{{servico.horasSala}}{{/if}}'
                       class='form-control'
                       name='horasSala'
-                      placeholder='Quantidade de horas por sala'
+                      placeholder='Quantidade de horas por sala'data-mask="0" required
                     />
                   </div>
                 </div>
@@ -150,10 +162,10 @@
                     <label for='valorBanheiro'>Valor por banheiro</label>
                     <input
                       type='text'
-                      value='{{ servico.valorBanheiro}}'
+                      value='{{#if message}}{{oldData.0.valorBanheiro}}{{^}}{{servico.valorBanheiro}}{{/if}}'
                       class='form-control'
                       name='valorBanheiro'
-                      placeholder='Valor por banheiro'
+                      placeholder='Valor por banheiro' required data-mask="#.##0,00" data-mask-reverse="true"
                     />
                   </div>
                 </div>
@@ -162,10 +174,10 @@
                     <label for='horasBanheiro'>Quantidade de horas por banheiro</label>
                     <input
                       type='number'
-                      value='{{ servico.horasBanheiro}}'
+                      value='{{#if message}}{{oldData.0.horasBanheiro}}{{^}}{{servico.horasBanheiro}}{{/if}}'
                       class='form-control'
                       name='horasBanheiro'
-                      placeholder='Quantidade de horas por banheiro'
+                      placeholder='Quantidade de horas por banheiro'data-mask="0" required
                     />
                   </div>
                 </div>
@@ -176,10 +188,10 @@
                     <label for='valorCozinha'>Valor por cozinha</label>
                     <input
                       type='text'
-                      value='{{ servico.valorCozinha}}'
+                      value='{{#if message}}{{oldData.0.valorCozinha}}{{^}}{{servico.valorCozinha}}{{/if}}'
                       class='form-control'
                       name='valorCozinha'
-                      placeholder='Valor por cozinha'
+                      placeholder='Valor por cozinha' required data-mask="#.##0,00" data-mask-reverse="true"
                     />
                   </div>
                 </div>
@@ -188,10 +200,10 @@
                     <label for='horasCozinha'>Quantidade de horas por cozinha</label>
                     <input
                       type='number'
-                      value='{{ servico.horasCozinha}}'
+                      value='{{#if message}}{{oldData.0.horasCozinha}}{{^}}{{servico.horasCozinha}}{{/if}}'
                       class='form-control'
                       name='horasCozinha'
-                      placeholder='Quantidade de horas por cozinha'
+                      placeholder='Quantidade de horas por cozinha'data-mask="0" required
                     />
                   </div>
                 </div>
@@ -202,10 +214,10 @@
                     <label for='valorQuintal'>Valor por quintal</label>
                     <input
                       type='text'
-                      value='{{ servico.valorQuintal}}'
+                      value='{{#if message}}{{oldData.0.valorQuintal}}{{^}}{{servico.valorQuintal}}{{/if}}'
                       class='form-control'
                       name='valorQuintal'
-                      placeholder='Valor por quintal'
+                      placeholder='Valor por quintal' required data-mask="#.##0,00" data-mask-reverse="true"
                     />
                   </div>
                 </div>
@@ -214,10 +226,10 @@
                     <label for='horasQuintal'>Quantidade de horas por quintal</label>
                     <input
                       type='number'
-                      value='{{ servico.horasQuintal}}'
+                      value='{{#if message}}{{oldData.0.horasQuintal}}{{^}}{{servico.horasQuintal}}{{/if}}'
                       class='form-control'
                       name='horasQuintal'
-                      placeholder='Quantidade de horas por quintal'
+                      placeholder='Quantidade de horas por quintal'data-mask="0" required
                     />
                   </div>
                 </div>
@@ -228,10 +240,10 @@
                     <label for='valorOutros'>Valor por outros tipos de cômodos</label>
                     <input
                       type='text'
-                      value='{{ servico.valorOutros}}'
+                      value='{{#if message}}{{oldData.0.valorOutros}}{{^}}{{servico.valorOutros}}{{/if}}'
                       class='form-control'
                       name='valorOutros'
-                      placeholder='Valor por outros cômodos'
+                      placeholder='Valor por outros cômodos' required data-mask="#.##0,00" data-mask-reverse="true"
                     />
                   </div>
                 </div>
@@ -241,10 +253,10 @@
                       tipos de cômodos</label>
                     <input
                       type='number'
-                      value='{{ servico.horasOutros}}'
+                      value='{{#if message}}{{oldData.0.horasOutros}}{{^}}{{servico.horasOutros}}{{/if}}'
                       class='form-control'
                       name='horasOutros'
-                      placeholder='Quantidade de horas por outros cômodos'
+                      placeholder='Quantidade de horas por outros cômodos'data-mask="0" required
                     />
                   </div>
                 </div>

@@ -17,7 +17,7 @@
         </div>
         <div class="content">
             <div class="container-fluid">
-                <form action="/admin/servicos" method="post">
+                <form action="/admin/servicos/" method="Post">
                 <div class="card">
                     <div class="card-body">
                         <fieldset>
@@ -50,7 +50,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="posicao">Posição na plataforma</label>
-                                        <input type="text" value="{{oldData.0.posicao}}" class="form-control" name="posicao" placeholder="Posição do serviço na plataforma">
+                                        <input type="text" value="{{oldData.0.posicao}}" class="form-control" name="posicao" placeholder="Posição do serviço na plataforma" data-mask="00" required>
                                     </div>
                                 </div>
                             </div>
@@ -62,7 +62,7 @@
                                     <div class="form-group">
                                         <label for="valorMinimo">Valor Mínimo</label>
                                         <input type="text" value="{{oldData.0.valorMinimo}}" class="form-control" name="valorMinimo" 
-                                        placeholder="Valor mínimo do serviço" required data-mask="#.##0,00" data-mask-reversse="true">
+                                        placeholder="Valor mínimo do serviço" required data-mask="#.##0,00" data-mask-reverse="true">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -75,7 +75,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="porcentagem">Porcentagem da comissão</label>
-                                        <input type="text" value="{{oldData.0.porcentagem}}" class="form-control" name="porcentagem" placeholder="Porcentagem da comissão do serviço">
+                                        <input type="text" value="{{oldData.0.porcentagem}}" class="form-control" name="porcentagem" placeholder="Porcentagem da comissão do serviço" data-mask="000" required>
                                     </div>
                                 </div>
                             </div>
@@ -87,13 +87,13 @@
                                     <div class="form-group">
                                         <label for="valorQuarto">Valor por quarto</label>
                                         <input type="text" value="{{oldData.0.valorQuarto}}" class="form-control" name="valorQuarto" 
-                                        placeholder="Valor por quarto" required data-mask="#.##0,00" data-mask-reversse="true">
+                                        placeholder="Valor por quarto" required data-mask="#.##0,00" data-mask-reverse="true">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="horasQuarto">Quantidade de horas por quarto</label>
-                                        <input type="number" value="{{oldData.0.horasQuarrto}}" class="form-control" name="horasQuarto" placeholder="Quantidade de horas por quarto"
+                                        <input type="number" value="{{oldData.0.horasQuarto}}" class="form-control" name="horasQuarto" placeholder="Quantidade de horas por quarto"
                                         data-mask="0" required>
                                     </div>
                                 </div>
@@ -103,13 +103,13 @@
                                     <div class="form-group">
                                         <label for="valorSala">Valor por sala</label>
                                         <input type="text" value="{{oldData.0.valorSala}}" class="form-control" name="valorSala" 
-                                        placeholder="Valor por sala" required data-mask="#.##0,00" data-mask-reversse="true">
+                                        placeholder="Valor por sala" required data-mask="#.##0,00" data-mask-reverse="true">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="horasSala">Quantidade de horas por sala</label>
-                                        <input type="number" value="{{oldData.0.horaSala}}" class="form-control" name="horasSala" placeholder="Quantidade de horas por sala"
+                                        <input type="number" value="{{oldData.0.horasSala}}" class="form-control" name="horasSala" placeholder="Quantidade de horas por sala"
                                         data-mask="0" required>
                                     </div>
                                 </div>
@@ -119,7 +119,7 @@
                                     <div class="form-group">
                                         <label for="valorBanheiro">Valor por banheiro</label>
                                         <input type="text" value="{{oldData.0.valorBanheiro}}" class="form-control" name="valorBanheiro" 
-                                        placeholder="Valor por banheiro" required data-mask="#.##0,00" data-mask-reversse="true">
+                                        placeholder="Valor por banheiro" required data-mask="#.##0,00" data-mask-reverse="true">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -135,7 +135,7 @@
                                     <div class="form-group">
                                         <label for="valorCozinha">Valor por cozinha</label>
                                         <input type="text" value="{{oldData.0.valorCozinha}}" class="form-control" name="valorCozinha" 
-                                        placeholder="Valor por cozinha" required data-mask="#.##0,00" data-mask-reversse="true">
+                                        placeholder="Valor por cozinha" required data-mask="#.##0,00" data-mask-reverse="true">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -151,7 +151,7 @@
                                     <div class="form-group">
                                         <label for="valorQuintal">Valor por quintal</label>
                                         <input type="text" value="{{oldData.valorQuintal}}" class="form-control" name="valorQuintal" 
-                                        placeholder="Valor por quintal" required data-mask="#.##0,00" data-mask-reversse="true">
+                                        placeholder="Valor por quintal" required data-mask="#.##0,00" data-mask-reverse="true">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -167,7 +167,7 @@
                                     <div class="form-group">
                                         <label for="valorOutros">Valor por outros tipos de cômodos</label>
                                         <input type="text" value="{{oldData.valorOutros}}" class="form-control" name="valorOutros" 
-                                        placeholder="Valor por outros cômodos" required data-mask="#.##0,00" data-mask-reversse="true">
+                                        placeholder="Valor por outros cômodos" required data-mask="#.##0,00" data-mask-reverse="true">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
