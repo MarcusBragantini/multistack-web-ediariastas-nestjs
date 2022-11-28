@@ -6,6 +6,7 @@ import { AppService } from './app.service';
 import { TypeOrmConfigService } from './database/typeorm-config';
 import { ServicesModule } from './services/services.module';
 import { UsuarioPlataformaModule } from './usuario-plataforma/usuario-plataforma.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -13,7 +14,8 @@ import { UsuarioPlataformaModule } from './usuario-plataforma/usuario-plataforma
       useClass: TypeOrmConfigService,
     }),
     ServicesModule,
-    UsuarioPlataformaModule
+    UsuarioPlataformaModule,
+    AuthModule
   ],
   controllers: [AppController],
   providers: [AppService],

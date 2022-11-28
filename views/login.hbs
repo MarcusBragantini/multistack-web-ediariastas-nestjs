@@ -23,11 +23,11 @@
           nova sessão</h3>
       </div>
       <div class='card-body login-card-body'>
-        <form action='#' method='post'>
+        <form action='/admin/login' method='post'>
           <div class='input-group mb-3'>
             <input
               type='email'
-              class='form-control'
+              class='form-control {{class}}'
               name='username'
               value=''
               placeholder='Email'
@@ -41,7 +41,7 @@
           <div class='input-group mb-3'>
             <input
               type='password'
-              class='form-control'
+              class='form-control {{class}}'
               name='password'
               value=''
               placeholder='Senha'
@@ -54,6 +54,7 @@
           </div>
           <div class='row'>
             <div class='col-12'>
+              <div class="text-center text-danger"><strong>{{loginError}}</strong></div>
               <button
                 class='btn btn-block btn-flat btn-primary'
                 type='submit'
